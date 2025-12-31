@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Layout from "./Pages/Layout";
+import MobileDev from "./Pages/Services/MobileDev";
+import WebDev from "./Pages/Services/WebDev";
+import CloudComputing from "./Pages/Services/CloudComputing";
+import StaffAugmentation from "./Pages/Services/StaffAugmentation";
+import Openings from "./Pages/Career/Openings";
+import Home from "./Pages/Home";
+import Internship from "./Pages/Career/Internship";
+import LifeAtCompany from "./Pages/Career/LifeAtCompany";
+import AboutUs from "./Pages/AboutUs";
+import Clients from "./Pages/Clients";
+import ContactUs from "./Pages/ContactUs";
+import Login from "./Pages/Login";
+import ForgotPassword from "./Pages/ForgotPassword";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      {/* <Layout /> */}
+
+      {/* <div className="pt-28 px-10"> */}
+      <Routes>
+
+        {/* HOME PAGE */}
+        <Route index element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/" element={<Layout />} />
+
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/about" element={<AboutUs />} />
+
+        <Route path="/service/mobile-development" element={<MobileDev />} />
+        <Route path="/service/web-development" element={<WebDev />} />
+        <Route path="/service/cloud-computing" element={<CloudComputing />} />
+        <Route path="/service/staff-augmentation" element={<StaffAugmentation />} />
+
+        <Route path="/career/openings" element={<Openings />} />
+        <Route path="/career/internship" element={<Internship />} />
+        <Route path="/career/life-at-company" element={<LifeAtCompany />} />
+
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/clients" element={<Clients />} />
+      </Routes>
+      {/* </div> */}
+    </div>
+  );
 }
 
-export default App
+export default App;
